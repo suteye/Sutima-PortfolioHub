@@ -82,6 +82,8 @@ jobs:
         with:
           path: ./out
 
+  #TODO: Add tests job with Cypress
+
   # Deployment job
   deploy:
     environment:
