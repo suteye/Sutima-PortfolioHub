@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { Providers } from "./providers/providers";
+import Header from "@/components/header"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,13 +12,16 @@ export const metadata = {
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode;
+}:{
+  children: React.ReactNode
 }) {
   return (
     <html lang="en" className={inter.className}>
       <body className="flex min-h-screen flex-col">
-        <Providers>{children}</Providers>
+        <Providers>
+          <Header/>
+          {children}
+        </Providers>
       </body>
     </html>
   );

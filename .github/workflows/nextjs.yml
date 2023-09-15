@@ -8,8 +8,9 @@ name: Deploy Next.js site to Pages
 
 on:
   # Runs on pushes targeting the default branch
-  push:
+  pull_request:
     branches: ["main"]
+    types: [opened]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -27,6 +28,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  #TODO: add test job by Cypress
   # Build job
   build:
     runs-on: ubuntu-latest
@@ -75,8 +77,6 @@ jobs:
         with:
           path: ./dist
 
-  #TODO: add test job by Cypress
-
   # Deployment job
   deploy:
     environment:
@@ -88,3 +88,17 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+  
+  # Close pull request job when deploy failed
+  close:
+    if: failure()
+    needs: [build, deploy]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close pull request
+        uses: peter-evans/close-pull@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pull-request-number: ${{ github.event.pull_request.number }}
+          comment: Auto-closing pull request due to deployment failure on ${{ github.event_name }} event.
+          delete-branch: false
