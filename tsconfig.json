@@ -34,8 +34,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "prettier.config.js",
-    "next.config.js",
     "dist/types/**/*.ts"
   ],
   "exclude": [
