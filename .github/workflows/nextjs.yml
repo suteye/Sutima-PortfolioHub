@@ -90,15 +90,15 @@ jobs:
         uses: actions/deploy-pages@v2
   
   # Close pull request job when deploy failed
-  close:
-    if: failure()
-    needs: [build, deploy]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Close pull request
-        uses: peter-evans/close-pull@v2
-        with:
-          token: ${{ secrets.TOKEN}}
-          pull-request-number: ${{ github.event.pull_request.number }}
-          comment: Auto-closing pull request due to deployment failure on ${{ github.event_name }} event.
-          delete-branch: false
+  # close:
+  #   if: failure()
+  #   needs: [build, deploy]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Close pull request
+  #       uses: peter-evans/close-pull@v2
+  #       with:
+  #         token: ${{ secrets.TOKEN}}
+  #         pull-request-number: ${{ github.event.pull_request.number }}
+  #         comment: Auto-closing pull request due to deployment failure on ${{ github.event_name }} event.
+  #         delete-branch: false
