@@ -2,6 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { Providers } from "./providers/providers";
 import Header from "@/components/header"
+import PageTransitions from "@/components/page-transitions"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,10 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <body className="flex min-h-screen flex-col">
-        <Providers>
+        <PageTransitions>
+           <Providers>
           <Header/>
           {children}
         </Providers>
+        </PageTransitions>
+       
       </body>
     </html>
   );

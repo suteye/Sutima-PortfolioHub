@@ -1,7 +1,7 @@
 "use client";
 
 import Preloader from "@/components/preloader";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Hero from "@/components/hero-banner";
 import About from "@/components/about";
@@ -31,9 +31,14 @@ export default function Home() {
       <section className="container">
         <Hero />
       </section>
-      <section className="">
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        id="about"
+      >
         <About />
-      </section>
+      </motion.section>
       <section className="">
         <Project />
       </section>

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import Image from 'next/image';
 import Rounded from '../../common/RoundedButton';
+import styles from './style.module.scss';
 
 const projects = [
     {
@@ -77,8 +78,8 @@ export default function Index() {
 
 
     return(
-      <main onMouseMove={(e) => {moveItems(e.clientX, e.clientY)}} className="flex items-center pl-[200px] pr-[200px] flex-col mt-[300px]">
-      <div className="max-w-[1400px] w-full flex-col items-center justify-center mb-[100px] ">
+      <main onMouseMove={(e) => {moveItems(e.clientX, e.clientY)}} className={styles.projects}>
+      <div className={styles.body}>
         {
           projects.map( (project, index) => {
             return <Project index={index} title={project.title} manageModal={manageModal} key={index}/>
@@ -89,26 +90,25 @@ export default function Index() {
         <p>More work</p>
       </Rounded>
       <>
-          <motion.div ref={modalContainer} variants={scaleAnimation} initial="initial" animate={active ? "enter" : "closed"} className="h-[350px] w-[400px] fixed top-[50%] left-[50%] bg-white pointer-events-none overflow-hidden z-30">
-              <div style={{top: index * -100 + "%"}} className="h-full w-full relative transition-top duration-500 ease-in-out">
+          <motion.div ref={modalContainer} variants={scaleAnimation} initial="initial" animate={active ? "enter" : "closed"} className={styles.modalContainer}>
+              <div style={{top: index * -100 + "%"}} className={styles.modalSlider}>
               {
                   projects.map( (project, index) => {
                   const { src, color } = project
-                  return <div className="h-full w-full flex items-center justify-center" style={{backgroundColor: color}} key={`modal_${index}`}>
+                  return <div className={styles.modal} style={{backgroundColor: color}} key={`modal_${index}`}>
                       <Image 
                       src={`/images/${src}`}
                       width={300}
                       height={0}
                       alt="image"
-                      className='h-auto'
                       />
                   </div>
                   })
               }
               </div>
           </motion.div>
-          <motion.div ref={cursor} className="w-[80px] h-[80px] rounded-[50%] bg-[#455CE9] text-white fixed z-30 items-center justify-center text-[14px] font-light pointer-events-none" variants={scaleAnimation} initial="initial" animate={active ? "enter" : "closed"}></motion.div>
-          <motion.div ref={cursorLabel} className="w-[80px] h-[80px] rounded-[50%] bg-[#455CE9] text-white fixed z-30 items-center justify-center text-[14px] font-light pointer-events-none bg-transparent" variants={scaleAnimation} initial="initial" animate={active ? "enter" : "closed"}>View</motion.div>
+          <motion.div ref={cursor} className={styles.cursor} variants={scaleAnimation} initial="initial" animate={active ? "enter" : "closed"}></motion.div>
+          <motion.div ref={cursorLabel} className={styles.cursorLabel} variants={scaleAnimation} initial="initial" animate={active ? "enter" : "closed"}>View</motion.div>
       </>
     </main>
     )
