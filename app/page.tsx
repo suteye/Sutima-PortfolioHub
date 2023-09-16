@@ -5,6 +5,7 @@ import { AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import Hero from "@/components/hero-banner";
 import About from "@/components/about";
+import Project from "@/components/project";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,6 +33,9 @@ export default function Home() {
       </section>
       <section className="">
         <About />
+      </section>
+      <section className="">
+        <Project />
       </section>
     </main>
   );
