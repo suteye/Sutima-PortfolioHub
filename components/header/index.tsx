@@ -13,7 +13,6 @@ import Link from "next/link";
 export default function Index() {
   const header = useRef(null);
   const [isActive, setIsActive] = useState(false);
-  const [currentSection, setCurrentSection] = useState("");
   const pathname = usePathname();
   const button = useRef(null);
 

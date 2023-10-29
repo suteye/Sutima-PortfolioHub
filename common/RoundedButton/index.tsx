@@ -8,7 +8,7 @@ interface RoundedButtonProps extends HTMLProps<HTMLDivElement> {
   backgroundColor?: string;
 }
 
-export default function Index({ children, backgroundColor = '#455CE9', ...attributes }: RoundedButtonProps) {
+export default function Index({ children, backgroundColor = '#afa18f', ...attributes }: RoundedButtonProps) {
   const circle = useRef<HTMLDivElement | null>(null);
   const timeline = useRef<gsap.core.Timeline | null>(null);
   let timeoutId: NodeJS.Timeout | null = null;

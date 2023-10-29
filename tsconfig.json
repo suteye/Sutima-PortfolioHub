@@ -35,7 +35,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "dist/types/**/*.ts"
-  ],
+, "components/sliding-Images"  ],
   "exclude": [
     "node_modules"
   ]

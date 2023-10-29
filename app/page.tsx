@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import Hero from "@/components/hero-banner";
 import About from "@/components/about";
 import Project from "@/components/project";
+import ContactUs from "@/components/contact-us";
+import SlidingImages from "@/components/sliding-Images";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -39,9 +41,16 @@ export default function Home() {
       >
         <About />
       </motion.section>
-      <section className="">
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        id="work"
+      >
         <Project />
-      </section>
+      </motion.section>
+      <SlidingImages />
+      <ContactUs />
     </main>
   );
 }
