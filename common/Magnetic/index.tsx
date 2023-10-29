@@ -6,41 +6,25 @@ export default function Index({
 }:{
     children: React.ReactNode
 }) {
-    const magnetic = useRef<HTMLDivElement | null>(null)
+    const magnetic = useRef<HTMLDivElement | null>(null);
+    useEffect( () => {
+        console.log(children)
+        const xTo = gsap.quickTo(magnetic.current, "x", {duration: 1, ease: "elastic.out(1, 0.3)"})
+        const yTo = gsap.quickTo(magnetic.current, "y", {duration: 1, ease: "elastic.out(1, 0.3)"})
 
-    useEffect(() => {
-        const handleMouseMove = (e: MouseEvent) => {
+        magnetic.current?.addEventListener("mousemove", (e) => {
             const { clientX, clientY } = e;
-            const { height, width, left, top } = magnetic.current!.getBoundingClientRect();
-            const x = clientX - (left + width / 2);
-            const y = clientY - (top + height / 2);
-
-            gsap.to(magnetic.current, {
-                x: x * 0.35,
-                y: y * 0.35,
-                duration: 0.2, // Adjust the duration as needed
-                ease: "elastic.out(1, 0.3)",
-            });
-        };
-
-        const handleMouseLeave = () => {
-            gsap.to(magnetic.current, {
-                x: 0,
-                y: 0,
-                duration: 0.2, // Adjust the duration as needed
-                ease: "elastic.out(1, 0.3)",
-            });
-        };
-
-        magnetic.current?.addEventListener("mousemove", handleMouseMove);
-        magnetic.current?.addEventListener("mouseleave", handleMouseLeave);
-
-        return () => {
-            // Cleanup event listeners when the component unmounts
-            magnetic.current?.removeEventListener("mousemove", handleMouseMove);
-            magnetic.current?.removeEventListener("mouseleave", handleMouseLeave);
-        };
-    }, []);
+            const {height, width, left, top} = magnetic.current?.getBoundingClientRect();
+            const x = clientX - (left + width/2)
+            const y = clientY - (top + height/2)
+            xTo(x * 0.35);
+            yTo(y * 0.35)
+        })
+        magnetic.current?.addEventListener("mouseleave", (e) => {
+            xTo(0);
+            yTo(0)
+        })
+    }, [])
     return (
         <div ref={magnetic} className="relative">
             {children}

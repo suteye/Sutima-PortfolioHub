@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 type ProjectDetailProps = {
   index: number;
   title: string;
@@ -24,10 +26,19 @@ export default function Index({
       onMouseLeave={(e) => {
         manageModal(false, index, e.clientX, e.clientY);
       }}
-      className="flex w-full justify-between items-center px-[100px] py-[50px] border-t border-[rgb(201, 201, 201)] cursor-pointer transition-all duration-200 ease-in-out hover:opacity-50"
+      className="border-[rgb(201, 201, 201)]  flex w-full cursor-pointer items-center justify-center border-t px-[100px] py-[50px] transition-all duration-200 ease-in-out hover:opacity-50 md:justify-between"
     >
-      <h2 className="text-[60px] m-0 font-normal transition-all duration-400 hover:-translate-x-[10px]">{title}</h2>
-      <p className=" transition-all duration-[0.4s] font-light  hover:translate-x-[10px]">Development</p>
+      <p className=" ml-6 font-light transition-all duration-[0.4s] hover:translate-x-[10px]  md:ml-0">
+      {index === 1 ? "2022" : "2023"}
+      </p>
+      <Link href={`/work/${index + 1}`}>
+        <h2 className="m-0 text-[clamp(1rem,-0.14rem+4.862vw,3.75rem)] font-normal transition-all duration-400 hover:-translate-x-[10px]">
+          {title}
+        </h2>
+      </Link>
+      <p className=" ml-6 font-light transition-all duration-[0.4s] hover:translate-x-[10px]  md:ml-0">
+        Development
+      </p>
     </div>
   );
 }

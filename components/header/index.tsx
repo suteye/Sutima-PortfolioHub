@@ -5,15 +5,23 @@ import { AnimatePresence } from "framer-motion";
 import Nav from "./nav";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import styles from './style.module.scss';
+import styles from "./style.module.scss";
 import Magnetic from "../../common/Magnetic";
 import Rounded from "../../common/RoundedButton";
+import Link from "next/link";
 
 export default function Index() {
   const header = useRef(null);
   const [isActive, setIsActive] = useState(false);
   const pathname = usePathname();
   const button = useRef(null);
+
+  const handleScrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  }
 
   useEffect(() => {
     if (isActive) setIsActive(false);
@@ -47,44 +55,57 @@ export default function Index() {
 
   return (
     <main>
-              <div ref={header} className={styles.header}>
-            <div className={`${styles.logo}`}>
-                <p className={styles.copyright}>©</p>
-                <div className={`${styles.name}`}>
-                    <p className={styles.codeBy}>Code by</p>
-                    <p className={styles.dennis}>Dennis</p>
-                    <p className={styles.snellenberg}>Snellenberg</p>
-                </div>
+      <div ref={header} className={styles.header}>
+        <Link className={`${styles.logo}`} href={"/"}>
+          <p className={styles.copyright}>©</p>
+          <div className={`${styles.name}`}>
+            <p className={styles.codeBy}>Sutima</p>
+            <p className={styles.dennis}>P</p>
+            <p className={styles.snellenberg}>:-)</p>
+          </div>
+        </Link>
+        <div className={styles.nav}>
+          <Magnetic>
+            <div className={`${styles.el}`}>
+              <a
+                onClick={() => handleScrollToSection("work")}
+              >
+                Work
+              </a>
+              <div className={styles.indicator}></div>
             </div>
-            <div className={styles.nav}>
-                <Magnetic>
-                    <div className={`${styles.el}`}>
-                        <a>Work</a>
-                        <div className={styles.indicator}></div>
-                    </div>
-                </Magnetic>
-                <Magnetic>
-                    <div className={styles.el}>
-                        <a>About</a>
-                        <div className={styles.indicator}></div>
-                    </div>
-                </Magnetic>
-                <Magnetic>
-                    <div className={styles.el}>
-                        <a>Contact</a>
-                        <div className={styles.indicator}></div>
-                    </div>
-                </Magnetic>
+          </Magnetic>
+          <Magnetic>
+            <div className={styles.el}>
+            <a onClick={() => handleScrollToSection("about")}
+ 
+              >About</a>
+              <div className={styles.indicator}></div>
             </div>
+          </Magnetic>
+          <Magnetic>
+            <div className={styles.el}>
+              <a onClick={() => handleScrollToSection("contact")}>Contact</a>
+              <div className={styles.indicator}></div>
+            </div>
+          </Magnetic>
         </div>
-        <div ref={button} className={styles.headerButtonContainer}>
-            <Rounded onClick={() => {setIsActive(!isActive)}} className={`${styles.button}`}>
-                <div className={`${styles.burger} ${isActive ? styles.burgerActive : ""}`}></div>
-            </Rounded>
-        </div>
-        <AnimatePresence mode="wait">
-            {isActive && <Nav />}
-        </AnimatePresence>
+      </div>
+      <div ref={button} className={styles.headerButtonContainer}>
+        <Rounded
+          onClick={() => {
+            setIsActive(!isActive);
+          }}
+          className={`${styles.button}`}
+        >
+          <div
+            className={`${styles.burger} ${
+              isActive ? styles.burgerActive : ""
+            }`}
+          ></div>
+        </Rounded>
+      </div>
+      <AnimatePresence mode="wait">{isActive && <Nav />}</AnimatePresence>
     </main>
   );
 }

@@ -19,7 +19,7 @@ export default function Index() {
         <div className="flex flex-col w-full mt-11 md:w-1/2">
           <div className="font-semibold">
             <MaskText />
-            <h3 className="text-[25px]"> 
+            <h3 className="text-[clamp(0.75rem,0.413rem+1.436vw,1.563rem)]"> 
                 <Typewriter
                     options={{
                         strings: ['a Freelance', 'a Frontend Developer', 'a Computer Science Student'],
@@ -35,9 +35,10 @@ export default function Index() {
           </div>
         </div>
 
-        <div className="hidden w-1/2 md:flex">
+        <div className=" w-full md:w-1/2 flex">
           <Image src={Pic} alt="Your Photo" className="mx-auto h-full w-full" />
         </div>
+
       </div>
     </main>
   );
@@ -63,7 +64,7 @@ export function MaskText() {
     triggerOnce: true,
   });
   return(
-    <div ref={ref} className="text-[50px]">
+    <div ref={ref} className="text-[clamp(1.125rem,0.296rem+3.536vw,3.125rem)]">
       {
         phrases.map( (phrase, index) => {
           return <div key={index} className="">

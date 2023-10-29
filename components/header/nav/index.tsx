@@ -5,6 +5,8 @@ import { menuSlide } from "../animation";
 import Link from "./link";
 import Footer from "./footer";
 import Curve from "./curve";
+import styles from "./style.module.scss";
+
 const navItems = [
   {
     title: "Home",
@@ -34,16 +36,16 @@ export default function Index() {
       initial="initial"
       animate="enter"
       exit="exit"
-      className="h-screen bg-[rgb(41, 41, 41)] fixed right-0 top-0 text-white z-30"
+      className={styles.menu}
     >
-      <div className="box-border h-full p-[100px] flex flex-col justify-between">
+      <div className={styles.body}>
         <div
           onMouseLeave={() => {
             setSelectedIndicator(pathname);
           }}
-          className="flex flex-col text-[56px] gap-3 mr-20"
+          className={styles.nav}
         >
-          <div className="text-[rgb(153, 153, 153)] border-b border-[rgb(153, 153, 153)] uppercase text-[11px] mb-10">
+          <div className={styles.header}>
             <p>Navigation</p>
           </div>
           {navItems.map((data, index) => {
