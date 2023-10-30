@@ -1,9 +1,10 @@
 {
     "rewrites": [
       {
-        "source": "/work/([0-9])",
+        "source": "/work/:workId",
         "destination": "/work/[workId].tsx"
       }
     ]
   }
+  
   
