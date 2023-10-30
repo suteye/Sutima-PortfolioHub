@@ -25,6 +25,13 @@ const getRedirects = async () => {
             destination: '/about',
         },
     ]
+
+    return redirects
 }
 
-module.exports = nextConfig
+module.exports ={
+    ...nextConfig,
+    async redirects() {
+        return getRedirects()
+    },
+}
