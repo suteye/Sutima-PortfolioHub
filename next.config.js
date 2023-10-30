@@ -1,18 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: "export",
-    distDir: 'dist',
+    // distDir: 'dist',
+    reactStrictMode: true,
     images: {
         unoptimized: true,
     },
-    // async rewrites() {
-    //     return [
-    //         //https://sutima-portfolio-hub.vercel.app/work/:workId
-    //         {
-    //             source: '/work/:workId',
-    //             destination: '/work/:workId',
-    //         },
-    //     ]
-    // },
+    experimental: {
+        appDir: true,
+      },
 }
 module.exports = nextConfig
