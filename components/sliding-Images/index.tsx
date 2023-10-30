@@ -37,7 +37,7 @@ const slider2 = [
     },
     {
         color: "#e1dad6",
-        src: "Eatu_2.jpg"
+        src: "EatU_2.jpg"
     }
 ]
 
