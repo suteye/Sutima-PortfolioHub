@@ -1,4 +1,4 @@
-export default function Page({ params }: { params: { slug: string } }) {
-  console.log(params.slug)
-    return <div>My Work: {params.slug}</div>
+export default function Page({ params }: { params: { workId: string } }) {
+  console.log(params.workId)
+    return <div>My Work: {params.workId}</div>
   }
