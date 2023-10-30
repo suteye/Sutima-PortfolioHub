@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { useScroll, useTransform, motion } from 'framer-motion';
 import styles from './style.module.scss';
 import Image from 'next/image';
+import { prefix } from '../../utils/prefix'
 
 const slider1 = [
     {
@@ -63,7 +64,7 @@ export default function index() {
                                     <Image 
                                     fill={true}
                                     alt={"image"}
-                                    src={`../images/${project.src}`}/>
+                                    src={`${prefix}/images/${project.src}`}/>
                                 </div>
                             </div>
                         })
@@ -77,7 +78,7 @@ export default function index() {
                                     <Image 
                                     fill={true}
                                     alt={"image"}
-                                    src={`../images/${project.src}`}/>
+                                    src={`${prefix}/images/${project.src}`}/>
                                 </div>
                             </div>
                         })
