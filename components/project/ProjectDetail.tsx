@@ -32,7 +32,9 @@ export default function Index({
       <p className=" ml-6 font-light transition-all duration-[0.4s] hover:translate-x-[10px]  md:ml-0">
       {index === 1 ? "2022" : "2023"}
       </p>
-      <Link href={`/work/${index + 1}`} as={`/work/1`}>
+      <Link href={
+        index === 0 ? "/work/noise-mapping"  : "/work/pos"
+       }>
         <h2 className="m-0 text-[clamp(1rem,-0.14rem+4.862vw,3.75rem)] font-normal transition-all duration-400 hover:-translate-x-[10px]">
           {title}
         </h2>
