@@ -68,7 +68,8 @@ export default function Index() {
           <Magnetic>
             <div className={`${styles.el}`}>
               <a
-                onClick={() => handleScrollToSection("work")}
+                href="/work"
+                // onClick={() => handleScrollToSection("work")}
               >
                 Work
               </a>
@@ -77,7 +78,9 @@ export default function Index() {
           </Magnetic>
           <Magnetic>
             <div className={styles.el}>
-            <a onClick={() => handleScrollToSection("about")}
+            <a 
+              href="/about"
+            // onClick={() => handleScrollToSection("about")}
  
               >About</a>
               <div className={styles.indicator}></div>
@@ -85,7 +88,8 @@ export default function Index() {
           </Magnetic>
           <Magnetic>
             <div className={styles.el}>
-              <a onClick={() => handleScrollToSection("contact")}>Contact</a>
+              <a 
+              onClick={() => handleScrollToSection("contact")}>Contact</a>
               <div className={styles.indicator}></div>
             </div>
           </Magnetic>

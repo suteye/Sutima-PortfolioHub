@@ -82,6 +82,9 @@ export default function NoiseMapping() {
                 improve the overall quality of the university's internal
                 environment.
               </p>
+              <h3 className=" mb-4 mt-5 text-[25px] font-bold uppercase leading-[-1px] -tracking-[1px]">
+              The project was presented at PRAGMA 39 in Jakarta, Indonesia, at Universitas YARSI and won the best student oral presentation award. (2nd runner-up)
+              </h3>
             </div>
           </div>
 

@@ -50,7 +50,10 @@ export default function Home() {
         <Project />
       </motion.section>
       <SlidingImages />
-      <ContactUs />
+      <div id="contact">
+         <ContactUs />
+      </div>
+     
     </main>
   );
 }
